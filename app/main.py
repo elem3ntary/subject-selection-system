@@ -1,7 +1,13 @@
 from fastapi import FastAPI
+from .routers import public
+from .db.connection import engine
+from .db.base import Base
 import uvicorn
 
+Base.metadata.create_all(bind=engine)
+
 app = FastAPI()
+app.include_router(public.router)
 
 
 @app.get("/")
