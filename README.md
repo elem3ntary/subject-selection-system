@@ -22,7 +22,7 @@ PATCH /admin/config -> edit registration status
 
 
 ```
-## Instalation
+## Installation
 ```bash
 $ pip3 install requirements.txt
 ```
@@ -32,11 +32,19 @@ $ pip3 install requirements.txt
 $ uvicorn app.main:app --port 3000
 ```
 
+## Testing
+```bash
+$ pytest
+```
+
+
 ## Technologies
 + FastAPI
 + SQLAlchemy
 + Pydantic
 + JWT
++ Pytest
+
 
 
 ## License
