@@ -24,17 +24,17 @@ PATCH /admin/config -> edit registration status
 ```
 ## Installation
 ```bash
-$ pip3 install requirements.txt
+pip3 install requirements.txt
 ```
 
 ## Usage
 ```bash
-$ uvicorn app.main:app --port 3000
+uvicorn app.main:app --port 3000
 ```
 
 ## Testing
 ```bash
-$ pytest
+pytest
 ```
 
 
