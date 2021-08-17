@@ -10,7 +10,7 @@ from ..crud.user import get_user_by_email
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="login")
 
 
 def get_password_hash(password):
@@ -30,6 +30,6 @@ def gen_access_token(user_id: str, expire_in_minutes: int):
 
 def authenticate_user(db: Session, email, password):
     db_user = get_user_by_email(db, email)
-    if not user or not verify_password(password, db_user.hashed_password):
+    if not db_user or not verify_password(password, db_user.hashed_password):
         return False
     return db_user

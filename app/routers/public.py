@@ -44,6 +44,13 @@ def register(user: UserCreate, db: Session = Depends(get_db)):
     if not user.password == user.repeat_password:
         raise HTTPException(400, "Passwords don`t match")
 
+    password_regex = "^(?=.*[A-Z])(?=.*[\W])(?=.*[0-9])(?=.*[a-z]).{8,128}$"
+    if not re.match(password_regex, user.password):
+        raise HTTPException(
+            400,
+            "Password shoud contain at least one number and capital letter",
+        )
+
     # hash user password
     hashed_password = get_password_hash(user.password)
     # register user
